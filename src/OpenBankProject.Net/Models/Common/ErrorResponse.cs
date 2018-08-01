@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace OpenBankProject.Net.Models.Common
+﻿namespace OpenBankProject.Net.Models.Common
 {
     public class ErrorResponse
     {
