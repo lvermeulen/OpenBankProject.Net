@@ -4,6 +4,6 @@ namespace OpenBankProject.Net.Models.User
 {
     public class UserList
     {
-        public List<User> Users { get; set; }
+        public List<Common.User> Users { get; set; }
     }
 }

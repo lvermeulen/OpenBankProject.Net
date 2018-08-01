@@ -8,7 +8,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 
 ## Features
 * [X] Api
-* [ ] Consumer
+* [X] Consumer
 * [ ] Documentation
 * [ ] Metric
 * [ ] Role
@@ -33,4 +33,4 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Transaction
 * [ ] Transaction Metadata
 * [ ] Transaction Request
-* [ ] User
+* [X] User

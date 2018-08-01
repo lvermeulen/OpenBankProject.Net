@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using OpenBankProject.Net.Models.Common;
 
-namespace OpenBankProject.Net.Models.User
+namespace OpenBankProject.Net.Models.Common
 {
     public class User
     {
