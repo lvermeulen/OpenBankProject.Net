@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net452</TargetFrameworks>
+    <Authors>Luk Vermeulen</Authors>
+    <Copyright>Copyright © 2018. All rights reserved.</Copyright>
+    <PackageIconUrl>https://i.imgur.com/2ym3YNc.jpg?1</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/lvermeulen/OpenBankProject.Net.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lvermeulen/OpenBankProject.Net.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Open Bank Project</PackageTags>
+    <PackageLicenseUrl>https://github.com/lvermeulen/OpenBankProject.Net/blob/master/LICENSE</PackageLicenseUrl>
+    <Description>C# client for Open Bank Project</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="2.3.2" />
+  </ItemGroup>
+
+</Project>

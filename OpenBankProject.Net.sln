@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B86212BB-738B-4E26-A5D9-D8A9232AAAC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{31C0F1ED-0879-4952-B68C-599780ECE5B5}"
+	ProjectSection(SolutionItems) = preProject
+		build\build.ps1 = build\build.ps1
+		build\test.ps1 = build\test.ps1
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBankProject.Net", "src\OpenBankProject.Net\OpenBankProject.Net.csproj", "{E4D86190-C87F-4298-9B80-D11E5A5B3868}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBankProject.Net.Tests", "test\OpenBankProject.Net.Tests\OpenBankProject.Net.Tests.csproj", "{0916315A-49EF-48B8-895E-6230DA7D64D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6904554-1601-4F6E-8FF8-8491AEBB6AB4}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4D86190-C87F-4298-9B80-D11E5A5B3868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D86190-C87F-4298-9B80-D11E5A5B3868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D86190-C87F-4298-9B80-D11E5A5B3868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D86190-C87F-4298-9B80-D11E5A5B3868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0916315A-49EF-48B8-895E-6230DA7D64D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0916315A-49EF-48B8-895E-6230DA7D64D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0916315A-49EF-48B8-895E-6230DA7D64D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0916315A-49EF-48B8-895E-6230DA7D64D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0916315A-49EF-48B8-895E-6230DA7D64D4} = {B86212BB-738B-4E26-A5D9-D8A9232AAAC8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4439AC7-D8D8-4B40-AF62-AA22C3D97D2F}
+	EndGlobalSection
+EndGlobal
