@@ -18,7 +18,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Account Public
 * [ ] Account View
 * [X] Bank
-* [ ] Bank ATM
+* [X] Bank ATM
 * [ ] Bank Branch
 * [ ] Bank FX
 * [ ] Bank Product
