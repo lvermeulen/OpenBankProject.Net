@@ -25,7 +25,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Card
 * [ ] Counterparty
 * [ ] Counterparty Metadata
-* [ ] Customer
+* [X] Customer
 * [ ] Customer Meeting
 * [ ] Customer Message
 * [ ] Data Warehouse
