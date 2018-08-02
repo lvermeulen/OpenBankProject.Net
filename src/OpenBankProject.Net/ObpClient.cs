@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl;
@@ -92,29 +91,6 @@ namespace OpenBankProject.Net
         {
             await HandleErrorsAsync(responseMessage).ConfigureAwait(false);
             return await ReadResponseContentAsync(responseMessage).ConfigureAwait(false);
-        }
-
-        private async Task<IEnumerable<T>> GetPagedResultsAsync<T>(int? maxPages, IDictionary<string, object> queryParamValues, Func<IDictionary<string, object>, Task<PagedResults<T>>> selector)
-        {
-            var results = new List<T>();
-            bool isLastPage = false;
-            int numPages = 0;
-
-            while (!isLastPage && (maxPages == null || numPages < maxPages))
-            {
-                var selectorResults = await selector(queryParamValues).ConfigureAwait(false);
-                results.AddRange(selectorResults.Values);
-
-                isLastPage = selectorResults.IsLastPage;
-                if (!isLastPage)
-                {
-                    queryParamValues["start"] = ((int?)queryParamValues["start"] ?? 0) + 1;
-                }
-
-                numPages++;
-            }
-
-            return results;
         }
     }
 }

@@ -17,7 +17,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Account Firehose
 * [ ] Account Public
 * [ ] Account View
-* [ ] Bank
+* [X] Bank
 * [ ] Bank ATM
 * [ ] Bank Branch
 * [ ] Bank FX

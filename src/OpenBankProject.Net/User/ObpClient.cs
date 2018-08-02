@@ -7,7 +7,7 @@ namespace OpenBankProject.Net
 {
     public partial class ObpClient
     {
-        private async Task<IFlurlRequest> GetUserUrlAsync()
+        private async Task<IFlurlRequest> GetUsersUrlAsync()
         {
             await CheckTokenAsync();
 
@@ -26,7 +26,7 @@ namespace OpenBankProject.Net
                 last_name = lastName
             };
 
-            var response = await (await GetUserUrlAsync())
+            var response = await (await GetUsersUrlAsync())
                 .PostJsonAsync(data)
                 .ConfigureAwait(false);
 
@@ -37,7 +37,7 @@ namespace OpenBankProject.Net
         {
             try
             {
-                return await (await GetUserUrlAsync())
+                return await (await GetUsersUrlAsync())
                     .AppendPathSegment("/current")
                     .GetJsonAsync<User>()
                     .ConfigureAwait(false);
@@ -53,7 +53,7 @@ namespace OpenBankProject.Net
         {
             try
             {
-                return await (await GetUserUrlAsync())
+                return await (await GetUsersUrlAsync())
                     .AppendPathSegment($"/username/{userName}")
                     .GetJsonAsync<User>()
                     .ConfigureAwait(false);
@@ -69,7 +69,7 @@ namespace OpenBankProject.Net
         {
             try
             {
-                return await (await GetUserUrlAsync())
+                return await (await GetUsersUrlAsync())
                     .AppendPathSegment($"/user_id/{userId}")
                     .GetJsonAsync<User>()
                     .ConfigureAwait(false);
@@ -85,7 +85,7 @@ namespace OpenBankProject.Net
         {
             try
             {
-                return await (await GetUserUrlAsync())
+                return await (await GetUsersUrlAsync())
                     .AppendPathSegment($"/email/{emailAddress}/terminator")
                     .GetJsonAsync<UserList>()
                     .ConfigureAwait(false);
@@ -101,7 +101,7 @@ namespace OpenBankProject.Net
         {
             try
             {
-                return await (await GetUserUrlAsync())
+                return await (await GetUsersUrlAsync())
                     .GetJsonAsync<UserList>()
                     .ConfigureAwait(false);
             }
