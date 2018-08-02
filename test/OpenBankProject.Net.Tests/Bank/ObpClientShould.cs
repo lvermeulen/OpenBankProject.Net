@@ -24,8 +24,11 @@ namespace OpenBankProject.Net.Tests
         [Fact]
         public async Task GetCreditLimitOrderRequestsAsync()
         {
-            //var result = await _client.GetCreditLimitOrderRequestsAsync();
-            //Assert.NotNull(result);
+            var banks = await _client.GetBanksAsync().ConfigureAwait(false);
+            var customers = await _client.GetCustomersForCurrentUserAsync().ConfigureAwait(false);
+            // ReSharper disable once SuggestVarOrType_BuiltInTypes
+            var result = await _client.GetCreditLimitOrderRequestsAsync(banks.Banks.First().Id, customers.Customers.First().CustomerId).ConfigureAwait(false);
+            Assert.NotNull(result);
         }
 
         [Fact]
@@ -39,14 +42,17 @@ namespace OpenBankProject.Net.Tests
         [Fact]
         public async Task GetCreditCardOrderStatusAsync()
         {
-            //var result = await _client.GetCreditCardOrderStatusAsync();
+            var banks = await _client.GetBanksAsync().ConfigureAwait(false);
+            var customers = await _client.GetCustomersForCurrentUserAsync().ConfigureAwait(false);
+            //var result = await _client.GetCreditCardOrderStatusAsync(banks.Banks.First().Id, customers.Customers.First().CustomerId, );
             //Assert.NotNull(result);
         }
 
         [Fact]
         public async Task GetCheckbookOrdersAsync()
         {
-            //var result = await _client.GetCheckbookOrdersAsync();
+            var banks = await _client.GetBanksAsync().ConfigureAwait(false);
+            //var result = await _client.GetCheckbookOrdersAsync(banks.Banks.First().Id, );
             //Assert.NotNull(result);
         }
     }

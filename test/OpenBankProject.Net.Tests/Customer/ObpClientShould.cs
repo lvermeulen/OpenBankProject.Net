@@ -17,9 +17,10 @@ namespace OpenBankProject.Net.Tests
         [Fact]
         public async Task GetCustomerSocialMediaHandlesAsync()
         {
-            //var banks = await _client.GetBanksAsync().ConfigureAwait(false);
-            //var result = await _client.GetCustomerSocialMediaHandlesAsync(banks.Banks.First().Id).ConfigureAwait(false);
-            //Assert.NotNull(result);
+            var banks = await _client.GetBanksAsync().ConfigureAwait(false);
+            var customers = await _client.GetCustomersForCurrentUserAsync().ConfigureAwait(false);
+            var result = await _client.GetCustomerSocialMediaHandlesAsync(banks.Banks.First().Id, customers.Customers.First().CustomerId).ConfigureAwait(false);
+            Assert.NotNull(result);
         }
 
         [Fact]
