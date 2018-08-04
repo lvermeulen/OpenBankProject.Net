@@ -13,7 +13,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Metric
 * [ ] Role
 * [ ] Sandbox
-* [ ] Account
+* [X] Account
 * [ ] Account Firehose
 * [ ] Account Public
 * [ ] Account View

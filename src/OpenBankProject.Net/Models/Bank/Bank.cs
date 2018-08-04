@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OpenBankProject.Net.Models.Common;
 
 namespace OpenBankProject.Net.Models.Bank
 {
