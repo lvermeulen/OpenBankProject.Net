@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.Common;
 using OpenBankProject.Net.Models.User;
@@ -81,14 +82,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<UserList> GetUsersByEmailAddressAsync(string emailAddress)
+        public async Task<IEnumerable<User>> GetUsersByEmailAddressAsync(string emailAddress)
         {
             try
             {
-                return await (await GetUsersUrlAsync())
+                return (await (await GetUsersUrlAsync())
                     .AppendPathSegment($"/email/{emailAddress}/terminator")
                     .GetJsonAsync<UserList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -97,13 +99,14 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<UserList> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             try
             {
-                return await (await GetUsersUrlAsync())
+                return (await (await GetUsersUrlAsync())
                     .GetJsonAsync<UserList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {

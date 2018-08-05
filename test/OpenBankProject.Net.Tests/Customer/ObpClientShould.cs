@@ -10,7 +10,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetCrmEventsAsync()
         {
             var banks = await _client.GetBanksAsync().ConfigureAwait(false);
-            var result = await _client.GetCrmEventsAsync(banks.Banks.First().Id).ConfigureAwait(false);
+            var result = await _client.GetCrmEventsAsync(banks.First().Id).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -19,7 +19,7 @@ namespace OpenBankProject.Net.Tests
         {
             var banks = await _client.GetBanksAsync().ConfigureAwait(false);
             var customers = await _client.GetCustomersForCurrentUserAsync().ConfigureAwait(false);
-            var result = await _client.GetCustomerSocialMediaHandlesAsync(banks.Banks.First().Id, customers.Customers.First().CustomerId).ConfigureAwait(false);
+            var result = await _client.GetCustomerSocialMediaHandlesAsync(banks.First().Id, customers.First().CustomerId).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -34,7 +34,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetBankCustomersForCurrentUserAsync()
         {
             var banks = await _client.GetBanksAsync();
-            var result = await _client.GetBankCustomersForCurrentUserAsync(banks.Banks.First().Id).ConfigureAwait(false);
+            var result = await _client.GetBankCustomersForCurrentUserAsync(banks.First().Id).ConfigureAwait(false);
             Assert.NotNull(result);
         }
     }

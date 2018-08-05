@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.Bank;
 using OpenBankProject.Net.Models.Common;
@@ -61,13 +62,14 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<BankList> GetBanksAsync()
+        public async Task<IEnumerable<Bank>> GetBanksAsync()
         {
             try
             {
-                return await (await GetBanksUrlAsync())
+                return (await (await GetBanksUrlAsync())
                     .GetJsonAsync<BankList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -110,14 +112,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<TransactionTypeRequestList> GetTransactionTypesAsync(string bankId)
+        public async Task<IEnumerable<TransactionTypeRequest>> GetTransactionTypesAsync(string bankId)
         {
             try
             {
-                return await (await GetBanksUrlAsync())
+                return (await (await GetBanksUrlAsync())
                     .AppendPathSegment($"/{bankId}/transaction-types")
                     .GetJsonAsync<TransactionTypeRequestList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -126,14 +129,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<CreditCardOrderStatusList> GetCreditCardOrderStatusAsync(string bankId, string accountId, string viewId)
+        public async Task<IEnumerable<CreditCardOrderStatus>> GetCreditCardOrderStatusAsync(string bankId, string accountId, string viewId)
         {
             try
             {
-                return await (await GetBanksUrlAsync())
+                return (await (await GetBanksUrlAsync())
                     .AppendPathSegment($"/{bankId}/accounts/{accountId}/{viewId}/credit_cards/orders")
                     .GetJsonAsync<CreditCardOrderStatusList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {

@@ -10,7 +10,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetConsumerAsync()
         {
             var consumers = await _client.GetConsumersAsync().ConfigureAwait(false);
-            var result = await _client.GetConsumerAsync(consumers.List.First().ConsumerId).ConfigureAwait(false);
+            var result = await _client.GetConsumerAsync(consumers.First().ConsumerId).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 

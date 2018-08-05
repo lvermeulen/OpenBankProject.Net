@@ -10,7 +10,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetBankAsync()
         {
             var banks = await _client.GetBanksAsync().ConfigureAwait(false);
-            var result = await _client.GetBankAsync(banks.Banks.First().Id).ConfigureAwait(false);
+            var result = await _client.GetBankAsync(banks.First().Id).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -18,7 +18,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetBanksAsync()
         {
             var result = await _client.GetBanksAsync().ConfigureAwait(false);
-            Assert.NotEmpty(result.Banks);
+            Assert.NotEmpty(result);
         }
 
         [Fact]
@@ -26,8 +26,9 @@ namespace OpenBankProject.Net.Tests
         {
             var banks = await _client.GetBanksAsync().ConfigureAwait(false);
             var customers = await _client.GetCustomersForCurrentUserAsync().ConfigureAwait(false);
+            //TODO: cleanup
             // ReSharper disable once SuggestVarOrType_BuiltInTypes
-            var result = await _client.GetCreditLimitOrderRequestsAsync(banks.Banks.First().Id, customers.Customers.First().CustomerId).ConfigureAwait(false);
+            var result = await _client.GetCreditLimitOrderRequestsAsync(banks.First().Id, customers.First().CustomerId).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -35,7 +36,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetTransactionTypesAsync()
         {
             var banks = await _client.GetBanksAsync().ConfigureAwait(false);
-            var result = await _client.GetTransactionTypesAsync(banks.Banks.First().Id).ConfigureAwait(false);
+            var result = await _client.GetTransactionTypesAsync(banks.First().Id).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 

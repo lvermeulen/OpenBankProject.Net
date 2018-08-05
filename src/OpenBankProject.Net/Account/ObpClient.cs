@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.Account;
 using OpenBankProject.Net.Models.Common;
@@ -56,14 +57,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<BankAccountList> GetAccountsHeldAsync(string bankId)
+        public async Task<IEnumerable<BankAccount>> GetAccountsHeldAsync(string bankId)
         {
             try
             {
-                return await (await GetAccountUrlAsync())
+                return (await (await GetAccountUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/accounts-held")
                     .GetJsonAsync<BankAccountList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -72,14 +74,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<AccountIdList> GetAccountIdsAsync(string bankId)
+        public async Task<IEnumerable<WithId>> GetAccountIdsAsync(string bankId)
         {
             try
             {
-                return await (await GetAccountUrlAsync())
+                return (await (await GetAccountUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/accounts/account_ids/private")
                     .GetJsonAsync<AccountIdList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -88,14 +91,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<AccountWithViewsList> GetAccountsWithViewsAsync(string bankId)
+        public async Task<IEnumerable<AccountWithViews>> GetAccountsWithViewsAsync(string bankId)
         {
             try
             {
-                return await (await GetAccountUrlAsync())
+                return (await (await GetAccountUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/accounts/private")
                     .GetJsonAsync<AccountWithViewsList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -104,14 +108,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<AccountWithViewsAvailableList> GetAccountsAsync(string bankId)
+        public async Task<IEnumerable<AccountWithViewsAvailable>> GetAccountsAsync(string bankId)
         {
             try
             {
-                return await (await GetAccountUrlAsync())
+                return (await (await GetAccountUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/accounts")
                     .GetJsonAsync<AccountWithViewsAvailableList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -120,14 +125,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<AccountWithViewsList> GetPrivateAccountsAtAllBanksAsync()
+        public async Task<IEnumerable<AccountWithViews>> GetPrivateAccountsAtAllBanksAsync()
         {
             try
             {
-                return await (await GetAccountUrlAsync())
+                return (await (await GetAccountUrlAsync())
                     .AppendPathSegment("/my/accounts")
                     .GetJsonAsync<AccountWithViewsList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {

@@ -40,7 +40,7 @@ namespace OpenBankProject.Net.Tests
         public async Task GetAllUsersAsync()
         {
             var results = await _client.GetAllUsersAsync().ConfigureAwait(false);
-            Assert.NotEmpty(results.Users);
+            Assert.NotEmpty(results);
         }
     }
 }

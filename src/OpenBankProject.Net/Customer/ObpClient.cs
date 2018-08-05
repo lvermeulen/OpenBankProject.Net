@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.Common;
 using OpenBankProject.Net.Models.Customer;
@@ -52,14 +53,15 @@ namespace OpenBankProject.Net
             return await HandleResponseAsync<UserCustomerLink>(response).ConfigureAwait(false);
         }
 
-        public async Task<CrmEventList> GetCrmEventsAsync(string bankId)
+        public async Task<IEnumerable<CrmEvent>> GetCrmEventsAsync(string bankId)
         {
             try
             {
-                return await (await GetCustomerUrlAsync())
+                return (await (await GetCustomerUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/crm-events")
                     .GetJsonAsync<CrmEventList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -68,14 +70,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<CustomerSocialMediaHandleList> GetCustomerSocialMediaHandlesAsync(string bankId, string customerId)
+        public async Task<IEnumerable<CustomerSocialMediaHandle>> GetCustomerSocialMediaHandlesAsync(string bankId, string customerId)
         {
             try
             {
-                return await (await GetCustomerUrlAsync())
+                return (await (await GetCustomerUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/customers/{customerId}/social_media_handles")
                     .GetJsonAsync<CustomerSocialMediaHandleList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -84,14 +87,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<CustomerList> GetCustomersForCurrentUserAsync()
+        public async Task<IEnumerable<Customer>> GetCustomersForCurrentUserAsync()
         {
             try
             {
-                return await (await GetCustomerUrlAsync())
+                return (await (await GetCustomerUrlAsync())
                     .AppendPathSegment("/users/current/customers")
                     .GetJsonAsync<CustomerList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
@@ -100,14 +104,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<CustomerList> GetBankCustomersForCurrentUserAsync(string bankId)
+        public async Task<IEnumerable<Customer>> GetBankCustomersForCurrentUserAsync(string bankId)
         {
             try
             {
-                return await (await GetCustomerUrlAsync())
+                return (await (await GetCustomerUrlAsync())
                     .AppendPathSegment($"/banks/{bankId}/customers")
                     .GetJsonAsync<CustomerList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {

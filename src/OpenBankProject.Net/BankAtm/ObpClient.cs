@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.BankAtm;
 using OpenBankProject.Net.Models.Common;
@@ -41,14 +42,15 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<AtmList> GetBankAtmsAsync(string bankId)
+        public async Task<IEnumerable<Atm>> GetBankAtmsAsync(string bankId)
         {
             try
             {
-                return await (await GetBankAtmUrlAsync())
+                return (await (await GetBankAtmUrlAsync())
                     .AppendPathSegment($"/{bankId}/atms")
                     .GetJsonAsync<AtmList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {

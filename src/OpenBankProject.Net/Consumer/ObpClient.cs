@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using OpenBankProject.Net.Models.Common;
 using OpenBankProject.Net.Models.Consumer;
@@ -55,13 +56,14 @@ namespace OpenBankProject.Net
             }
         }
 
-        public async Task<ConsumerList> GetConsumersAsync()
+        public async Task<IEnumerable<Consumer>> GetConsumersAsync()
         {
             try
             {
-                return await (await GetConsumerUrlAsync())
+                return (await (await GetConsumerUrlAsync())
                     .GetJsonAsync<ConsumerList>()
-                    .ConfigureAwait(false);
+                    .ConfigureAwait(false))
+                    .GetEnumerableResults();
             }
             catch (FlurlHttpException ex)
             {
