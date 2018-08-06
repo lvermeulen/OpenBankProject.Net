@@ -28,7 +28,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [X] Customer
 * [ ] Customer Meeting
 * [ ] Customer Message
-* [ ] Data Warehouse
+* [X] Data Warehouse
 * [ ] KYC
 * [X] Transaction
 * [ ] Transaction Metadata
