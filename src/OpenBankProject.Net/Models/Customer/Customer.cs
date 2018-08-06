@@ -19,7 +19,7 @@ namespace OpenBankProject.Net.Models.Customer
         public string MobilePhoneNumber { get; set; }
         public string Email { get; set; }
         [JsonProperty("face_image")]
-        public Image FaceImage { get; set; }
+        public ImageInformation FaceImage { get; set; }
         [JsonProperty("date_of_birth")]
         public DateTime? DateOfBirth { get; set; }
         [JsonProperty("relationship_status")]

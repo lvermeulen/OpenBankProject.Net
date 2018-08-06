@@ -8,10 +8,10 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 
 ## Features
 * [X] Api
-* [X] Consumer
-* [ ] Documentation
-* [ ] Metric
-* [ ] Role
+* [X] Api Consumer
+* [X] Api Documentation
+* [ ] Api Metric
+* [ ] Api Role
 * [ ] Sandbox
 * [X] Account
 * [ ] Account Firehose
@@ -30,7 +30,7 @@ C# client for [Open Bank Project](https://openbankproject.com/)
 * [ ] Customer Message
 * [ ] Data Warehouse
 * [ ] KYC
-* [ ] Transaction
+* [X] Transaction
 * [ ] Transaction Metadata
 * [ ] Transaction Request
 * [X] User

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace OpenBankProject.Net.Models.Customer
+namespace OpenBankProject.Net.Models.Common
 {
-    public class Image
+    public class ImageInformation
     {
         public string Url { get; set; }
         public DateTime? Date { get; set; }
